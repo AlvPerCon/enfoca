@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="account_reports_backend" inherit_id="web.assets_backend" active="True">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/dv_account_reports_base/static/src/js/mail_activity.js"></script>
+                <script type="text/javascript" src="/dv_account_reports_base/static/src/js/account_reports.js"></script>
+                <script type="text/javascript" src="/dv_account_reports_base/static/src/js/action_manager_account_report_dl.js"></script>
+                <link rel="stylesheet" type="text/scss" href="/dv_account_reports_base/static/src/scss/account_financial_report.scss"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>
