@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+	<record id="view_telecredito_filter" model="ir.ui.view">
+		<field name="name">speru.telecredito.search</field>
+		<field name="model">speru.telecredito</field>
+		<field name="arch" type="xml">
+			<search string="Telecredito">
+				<field name="name" string="Nombre" filter_domain="['|', ('company_id', 'ilike', self), ('name', 'ilike', self)]"/>
+				<separator/>
+				<group expand="0" string="Group By">
+					<filter name="group_bloque" string="Torre" domain="[]" context="{'group_by': 'company_id'}"/>
+				</group>
+				<searchpanel>
+					<field name="company_id" groups="base.group_multi_company" icon="fa-building" enable_counters="1"/>
+				</searchpanel>
+			</search>
+		 </field>
+	</record>
+
+	<record id="view_telecredito_form" model="ir.ui.view">
+		<field name="name">speru.telecredito.form</field>
+		<field name="model">speru.telecredito</field>
+		<field name="priority" eval="1"/>
+		<field name="arch" type="xml">
+			<form string="telecredito">
+			<sheet>
+				<div class="oe_button_box" name="button_box">
+					<button
+						name="crear_txt_proveedor"
+						type="object"
+						string="Generar TXT Proveedor"
+						attrs="{'invisible': [('state', '=', 'confirmado')]}"
+					/>
+					<button
+						name="registrar_pago"
+						type="object"
+						string="Registrar pago"
+						attrs="{'invisible': [('state', '=', 'confirmado')]}"
+					/>
+				</div>
+
+				<div class="oe_title">
+					<h1>
+						<field name="name"/>
+					</h1>
+				</div>
+
+				<group>
+					<group>
+						<field name="state" invisible="1" />
+						<field name="company_id"/>
+						<field name="fecha"/>
+						<field name="tipo_cuenta"/>
+						<field name="cuenta_cargo"/>
+					</group>
+					<group>
+						<field name="monto_total"/>
+						<field name="referencia"/>
+
+						<field name="telecredito_txt_01" invisible="1"/>
+						<field name="telecredito_txt_01_binary" filename="telecredito_txt_01_filename" />
+						<field name="telecredito_txt_01_filename" invisible="1"/>
+					</group>
+				</group>
+				<notebook colspan="4">
+					<page string="Facturas" name="pagos_enviar">
+						<field name="factura_ids" nolabel="1" style="width: 100%;">
+						  <tree name="factura_ids_tree" editable="bottom" create="false">
+							<field name="company_id" invisible="1" />
+							<field name="currency_id" optional="hide" />
+							<field name="state" invisible="1" />
+							<field name="name" string="Nombre" readonly="1"/>
+							<field name="ref" string="Referencia"/>
+							<field name="partner_id" string="Nombre Entidad"/>
+							<field name="date" string="Fecha"/>
+							<field name="amount_total" widget="monetary" options="{'currency_field': 'currency_id'}" string="Monto" />
+						  </tree>
+					  </field>
+					</page>
+				</notebook>
+			</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="view_telecredito_tree" model="ir.ui.view">
+		<field name="name">speru.telecredito.tree</field>
+		<field name="model">speru.telecredito</field>
+		<field eval="8" name="priority"/>
+		<field name="arch" type="xml">
+			<tree string="telecreditos"  multi_edit="1" >
+				<field name="name" string="Nombre"/>
+				<field name="tipo_cuenta" string="Tipo cuenta"/>
+				<field name="cuenta_cargo" string="Cuenta cargo"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_telecredito_form" model="ir.actions.act_window">
+		<field name="name">telecreditos</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">speru.telecredito</field>
+		<field name="view_mode">tree,kanban,form</field>
+		<field name="search_view_id" ref="view_telecredito_filter"/>
+		<field name="filter" eval="True"/>
+		<field name="help" type="html">
+		  <p class="o_view_nocontent_smiling_face">
+			Crear un nueva telecredito
+		  </p><p>
+			
+		  </p>
+		</field>
+	</record>
+
+	<menuitem name="Telecrédito - BCP" id="pe_telecredito_menu" parent="account.account_banks_menu" action="action_telecredito_form" sequence="3" />
+
+</data>
+</odoo>

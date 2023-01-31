@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+	<record model="ir.ui.view" id="view_partner_telecredito_form">
+		<field name="name">res.partner.telecredito.view.form</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='bank_ids']//field[@name='acc_number']" position="after">
+				<field name="tipo_cuenta" />
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

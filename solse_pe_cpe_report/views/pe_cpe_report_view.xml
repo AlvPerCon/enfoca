@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+  	<record id="view_cpe_report_form" model="ir.ui.view">
+        <field name="name">solse.pe.cpe.report.form</field>
+        <field name="model">solse.pe.cpe.report</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <form string="Reporte">
+            <sheet>
+                <group>
+                    <group>
+                        <field name="name" />
+                        <field name="fecha_inicio" />
+                        <field name="fecha_fin" />
+                        <field name="partner_id" />
+                    </group>
+                    <group>
+                        <button
+                            name="generate_report"
+                            type="object"
+                            string="Generar reporte"
+                        />
+                    </group>
+                </group>
+                <group>
+                    <field name="reporte_nombre" />
+                    <field name="reporte_binary" />
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_cpe_reporte_form" model="ir.actions.act_window">
+        <field name="name">Reporte CPE</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">solse.pe.cpe.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="filter" eval="True"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            
+          </p><p>
+            
+          </p>
+        </field>
+    </record>
+
+  	<!-- Inicio 
+    <menuitem name="Reportes CPE" id="cpe_reporte_menu_g"/> -->
+    <menuitem name="Reporte CPE" id="cpe_reporte_facturas" parent="account.menu_finance_receivables" sequence="100" action="action_cpe_reporte_form"/>
+</data>
+</odoo>

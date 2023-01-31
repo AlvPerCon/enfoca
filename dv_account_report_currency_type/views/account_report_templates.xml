@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="filter_info_template" inherit_id="account_reports.filter_info_template">
+        <!--<xpath expr="//t[@t-esc='analytic_account_value']/../.." position="before">-->
+            <xpath expr="//div[hasclass('col-12')][1]" position="before">
+            <div class="col-12">
+                <!--
+                <t t-if="options.get('currency_type') != None">
+                    Currency Type:
+                    <div class="dropdown-menu o_filter_menu" role="menu">
+                        <a role="menuitem" class="dropdown-item js_account_reports_one_choice_filter" title="buy" data-id="0">buy2</a>
+                        <a role="menuitem" class="dropdown-item js_account_reports_one_choice_filter" title="sell" data-id="0">sell2</a>
+                    </div>
+                </t>
+                -->
+                <t>
+                    Currency Type:
+                   
+                </t>
+            </div>
+            <div class="col-12">
+                <t t-if="options.get('accounts') != None">
+                    Accounts:
+                    <t t-set="account_value" t-value="'All'"/>
+                    <t t-foreach="options['selected_account_names']" t-as="account_name">
+                        <t t-set="account_value" t-value="''"/>
+                        <t t-esc="account_name"/>
+                    </t>
+                    <t t-esc="account_value"/>
+                </t>
+            </div>
+        </xpath>
+        
+        <xpath expr="//div[hasclass('col-12')][2]" position="before">
+            <div class="col-12">
+                <!--
+                <t t-if="options.get('currency_type') != None">
+                    Currency Type:
+                    <div class="dropdown-menu o_filter_menu" role="menu">
+                        <a role="menuitem" class="dropdown-item js_account_reports_one_choice_filter" title="buy" data-id="0">buy2</a>
+                        <a role="menuitem" class="dropdown-item js_account_reports_one_choice_filter" title="sell" data-id="0">sell2</a>
+                    </div>
+                </t>
+                -->
+                <t>
+                    Currency Type:
+                   
+                </t>
+            </div>
+            <div class="col-12">
+                <t t-if="options.get('accounts') != None">
+                    Accounts:
+                    <t t-set="account_value" t-value="'All'"/>
+                    <t t-foreach="options['selected_account_names']" t-as="account_name">
+                        <t t-set="account_value" t-value="''"/>
+                        <t t-esc="account_name"/>
+                    </t>
+                    <t t-esc="account_value"/>
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>
