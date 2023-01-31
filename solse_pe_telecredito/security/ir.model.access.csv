@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_speru_telecredito_crear,telecredito.asignar,model_speru_telecredito_crear,,1,1,1,1
+access_speru_telecredito,telecredito.stelecredito,model_speru_telecredito,,1,1,1,1
+access_speru_pagos_remp,pagos_remp.spagos_remp,model_account_payment_register_temp,,1,1,1,1
