@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!--Create a scheduled action that consumes the web service and saves its data -->
+    <record id="ir_cron_call_kds_web_service" model="ir.cron">
+        <field name="name">Xml to JSON</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_account_move"/>
+        <field name="code">model.xml_to_json()</field>
+        <field name="state">code</field>
+    </record>
+</odoo>

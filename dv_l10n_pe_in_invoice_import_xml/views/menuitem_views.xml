@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <menuitem id="invoice_supplier_import_menu_act" name="Importar XML" parent="account.menu_finance_payables" action="invoice_supplier_import_action" sequence="99"/>
+</odoo>
