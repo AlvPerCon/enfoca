@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="search_template_filter_billable_expense">
+        <t t-if="options.get('currency_type') != None">
+            <button type="button" class="o_dropdown_toggler_btn btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                <span class="fa fa-book"/>
+                Currency Type:
+                <t t-if="options['currency_type']">
+                    <t t-set="selected_report" t-value="[opt for opt in options['available_currency_types'] if opt['id'] == options['currency_type']][0]"/>
+                    <t t-esc="selected_report['name']"/>
+                </t>
+                <t t-else="">
+                    Ninguno
+                </t>
+            </button>
+            <div class="dropdown-menu o_filter_menu" role="menu">
+                <a role="menuitem" class="dropdown-item js_account_reports_one_choice_filter" title="Global Summary" data-filter="currency_type" data-id="0" groups="account.group_account_readonly">Ninguno</a>
+                <t t-foreach="options['available_currency_types']" t-as="report">
+                    <a tole="menuitem" class="dropdown-item js_account_reports_one_choice_filter" t-att-title="report['name']" t-att-data-id="report['id']" data-filter="currency_type">
+                        <t t-esc="report['name']"/>
+                    </a>
+                </t>
+            </div>
+        </t>
+    </template>
+    <template id="search_template_inherit_billable_expense" inherit_id="account_reports.search_template">
+        <div id="extra_options_dropdown" position="after">
+            <div id="extra_options_dropdown_billable_expense" class="btn-group o_dropdown">
+                <t t-call="dv_account_report_currency_type.search_template_filter_billable_expense"/>
+            </div>
+        </div>
+    </template>
+</odoo>
